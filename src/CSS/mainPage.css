@@ -1,0 +1,16 @@
+.fullpage {
+    height: 100vh;
+}
+.mainPage {
+    display: flex;
+    justify-content: space-around;
+    height: 92%;
+}
+
+@media (max-width: 750px) {
+    .mainPage {
+        display: flex;
+        flex-direction: column;
+        height: 150vh;
+    }
+}

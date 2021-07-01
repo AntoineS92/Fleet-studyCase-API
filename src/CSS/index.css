@@ -1,0 +1,17 @@
+@import url("searchBar.css");
+@import url("movies.css");
+@import url("singleMovie.css");
+@import url("mainPage.css");
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Big Shoulders Display', cursive;
+}
+
+body {
+  background-color: #EAEAEA;
+  height: 160vh;
+}
