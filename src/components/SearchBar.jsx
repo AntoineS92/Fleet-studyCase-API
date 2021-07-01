@@ -1,5 +1,6 @@
 import React from 'react';
 
+// WE NEED THE PROPS TO PASS THE VALUE FROM THE PARENT TO THE CHILD COMPONENT
 const SearchBar = (props) => {
   return (
     <input

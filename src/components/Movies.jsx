@@ -9,10 +9,11 @@ class MoviesList extends Component {
     searchValue: "",
     clickedMovie: null,
     searchedMovies: null,
-    thisIsATest: "",
   };
 
   componentDidMount() {
+    // LOADING THE DATA FROM THE API. I COULD NOT FIND A WAY TO LOAD A RANDOM LIST SO I USED THE POPULAR ONES
+    // BECAUSE IT IS LOADED AFTER THE FIRST RENDER, THERE IS A GUARD OPERATOR TO AVOID THE CRASH (LIGN 83 AND 100)
     axios
       .get(
         "https://api.themoviedb.org/3/movie/popular?api_key=ac2bcaeb758a38cf87b7019c7cba947d"
@@ -30,7 +31,8 @@ class MoviesList extends Component {
     this.setState({
       searchValue: value,
     });
-
+// WE GET HERE THE SEARCH BY ADDING THE URL AND THE SEARCH VALUE AS THE QUERY. 
+// DOC: https://developers.themoviedb.org/3/search/search-movies
     axios
       .get(
         "https://api.themoviedb.org/3/search/movie?api_key=ac2bcaeb758a38cf87b7019c7cba947d&query=" +
@@ -38,6 +40,7 @@ class MoviesList extends Component {
       )
       .then((response) => {
         console.log(response);
+        //WHEN WE HAVE THE RESPONSE FROM THE SERVER, WE UPDATE THE MOVIES STATE SO THAT THEY ARE DISPLAYED ON THE LIST
         this.setState({
           movies: response.data.results,
         });
@@ -46,8 +49,10 @@ class MoviesList extends Component {
       .catch((err) => console.log(err));
   };
 
+  //FUNCTION TO ADD THE CLICKED MOVIE INTO THE STATE SO WE CAN DISPLAY IT
   handleSingleMovieClick = (event, singleMovie) => {
     console.log("clicked !", event.target, singleMovie);
+    //THE STATE IS UPDATED. AGAIN, TO AVOID ANY CRASHED, WE USE THE GUARD OPERATOR
     this.setState({
       clickedMovie: singleMovie,
     });
@@ -55,11 +60,9 @@ class MoviesList extends Component {
   };
 
   render() {
-    if (this.state.thisIsATest) {
-      this.setState({
-        thisIsATest: "hello",
-      });
-    }
+    // I TRIED HERE TO PUT THE GET API IN THE RENDER TO AVOID THE ONE CHARACTER DELAY.
+    //THE DELAY WAS SOLVED BUT WHENEVER THE STATE CHANGES, THE RENDER IS ... RENDERED. WHICH WAS MAKING THE CODE ENTERTING IN AN ENLESS ITERATION
+    //
     // if (this.state.searchValue) {
     //   axios
     //     .get(
@@ -80,6 +83,7 @@ class MoviesList extends Component {
           value={this.state.searchValue}
         />
 
+        {/* GUARD OPERATOR TO AVOID THE CRASH */}
         {this.state.searchedMovies &&
           this.state.searchedMovies.map((singleMovie) => {
             return (
@@ -96,7 +100,8 @@ class MoviesList extends Component {
 
         <div className="mainPage">
           <div className="moviesList">
-            {this.state.movies && 
+            {/* GUARD OPERATOR TO AVOID THE CRASH */}
+            {this.state.movies &&
               this.state.movies.map((singleMovie) => {
                 return (
                   <div
@@ -115,6 +120,7 @@ class MoviesList extends Component {
 
           {this.state.clickedMovie && (
             <div className="clickedMovieDetails">
+            {/* TO GET THE IMAGE OF THE POSTER, WE NEED THE FULL URL TO MAKE THE REQUEST TO THE SERVER */}
               <img
                 src={
                   "https://image.tmdb.org/t/p/w500/" +
@@ -128,7 +134,7 @@ class MoviesList extends Component {
                 {/* I removed the decimals of the popularity because they don't make a lot of sense for the user */}
                 {/* little use of bulma here to try it */}
                 <p id="movie-popularity">
-                  Popularity :{" "}
+                  Popularity :
                   <progress
                     class="progress is-success"
                     value={parseFloat(
