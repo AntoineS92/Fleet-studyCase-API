@@ -1,6 +1,6 @@
 This project was build for a technical interview.
 
-This is the first part of the project and it doesn't include the MovieDB. It uses a JSON file that was provided by Fleet.
+For this wepApp, I am using the Movie DB to display some movies.
 
 before launching the project, you should run in the project directory terminal : 
 ### npm install
