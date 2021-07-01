@@ -13,3 +13,9 @@ The localhost should open automatically after a few seconds. If not : Open http:
 
 The page will reload if you make edits.
 You will also see any lint errors in the console.
+
+
+I tried to make it a little bit responsive by adding a few medias queries. 
+I used bulma to make the popularity bar. 
+
+A problem that I could not solve : When writting a search, there is a delay of one character. I tried a few things to solve it but nothing worked. 
