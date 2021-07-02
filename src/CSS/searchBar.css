@@ -1,12 +1,11 @@
-.searchBar {
-    background-color: #535BF4;
+.search-bar {
     height: 8%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.searchBar > input {
+.search-bar > input {
     font-size: 20px;
     width: 250px;
     height: 50px;

@@ -82,6 +82,7 @@ class MoviesList extends Component {
           handleChange={this.handleSearchValue}
           value={this.state.searchValue}
         />
+        <div id="bg"></div>
 
         {/* GUARD OPERATOR TO AVOID THE CRASH */}
         {this.state.searchedMovies &&

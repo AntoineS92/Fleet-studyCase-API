@@ -1,10 +1,22 @@
 .fullpage {
     height: 100vh;
+
 }
+
+#bg {
+    background-color: rgba(83, 91, 244, 0.6);
+    width: 100%;
+    height: calc(100% - 60px);
+    position: absolute;
+    clip-path: polygon(50% 0, 100% 0, 100% 50%, 50% 100%, 0 100%, 0 50%);
+    z-index: 0;
+}
+
 .mainPage {
     display: flex;
     justify-content: space-around;
-    height: 92%;
+    height: 85%;
+    margin-top: 10px;
 }
 
 @media (max-width: 750px) {
