@@ -4,6 +4,7 @@
   max-width: 45%;
   min-width: 45%;
   overflow: scroll;
+  overflow-x: hidden;
   height: 100%;
   z-index: 1;
 }
